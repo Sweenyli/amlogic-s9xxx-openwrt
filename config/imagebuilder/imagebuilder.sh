@@ -221,7 +221,11 @@ rebuild_firmware() {
         \
         ${config_list} \
         "
-
+    my_packages="\
+        luci luci-base luci-compat luci-i18n-base-zh-cn \
+        \
+        ${config_list} \
+        "
     # Rebuild firmware
     make image PROFILE="" PACKAGES="${my_packages}" FILES="files"
 
