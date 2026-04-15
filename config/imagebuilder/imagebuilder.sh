@@ -224,6 +224,7 @@ rebuild_firmware() {
     my_packages="\
         luci luci-base luci-compat luci-i18n-base-zh-cn \
         \
+        luci-app-amlogic luci-i18n-amlogic-zh-cn \
         ${config_list} \
         "
     # Rebuild firmware
