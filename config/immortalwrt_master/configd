@@ -1,0 +1,173 @@
+#
+# Target
+#
+CONFIG_TARGET_armsr=y
+CONFIG_TARGET_armsr_armv8=y
+CONFIG_TARGET_armsr_armv8_DEVICE_generic=y
+CONFIG_TARGET_BOARD="armsr"
+CONFIG_TARGET_SUBTARGET="armv8"
+CONFIG_TARGET_PROFILE="DEVICE_generic"
+CONFIG_TARGET_ARCH_PACKAGES="aarch64_generic"
+
+#
+# Image
+#
+# 不强制 initramfs，减少体积
+# CONFIG_TARGET_ROOTFS_INITRAMFS is not set
+CONFIG_TARGET_ROOTFS_SQUASHFS=y
+# CONFIG_TARGET_ROOTFS_EXT4FS is not set
+CONFIG_TARGET_KERNEL_PARTSIZE=32
+CONFIG_TARGET_ROOTFS_PARTSIZE=256
+CONFIG_TARGET_SERIAL="ttyS0"
+
+#
+# Base system
+#
+CONFIG_PACKAGE_base-files=y
+CONFIG_PACKAGE_busybox=y
+CONFIG_PACKAGE_ca-bundle=y
+CONFIG_PACKAGE_ca-certificates=y
+CONFIG_PACKAGE_dnsmasq-full=y
+CONFIG_PACKAGE_dropbear=y
+CONFIG_PACKAGE_firewall4=y
+CONFIG_PACKAGE_fstools=y
+CONFIG_PACKAGE_logd=y
+CONFIG_PACKAGE_mtd=y
+CONFIG_PACKAGE_netifd=y
+CONFIG_PACKAGE_nftables=y
+CONFIG_PACKAGE_odhcp6c=y
+CONFIG_PACKAGE_odhcpd-ipv6only=y
+CONFIG_PACKAGE_ppp=y
+CONFIG_PACKAGE_ppp-mod-pppoe=y
+CONFIG_PACKAGE_procd=y
+CONFIG_PACKAGE_procd-ujail=y
+CONFIG_PACKAGE_rpcd=y
+CONFIG_PACKAGE_ubox=y
+CONFIG_PACKAGE_ubus=y
+CONFIG_PACKAGE_ubusd=y
+CONFIG_PACKAGE_uci=y
+CONFIG_PACKAGE_uclient-fetch=y
+CONFIG_PACKAGE_urandom-seed=y
+CONFIG_PACKAGE_urngd=y
+CONFIG_PACKAGE_usign=y
+CONFIG_PACKAGE_libustream-openssl=y
+
+#
+# IPv6
+#
+CONFIG_IPV6=y
+
+#
+# Keep only one/few NIC drivers you may actually need
+# 章鱼星球常见可先保守留这两个；若确定网卡型号，可再删一个
+#
+CONFIG_PACKAGE_kmod-mii=y
+CONFIG_PACKAGE_kmod-libphy=y
+CONFIG_PACKAGE_kmod-r8169=y
+CONFIG_PACKAGE_r8169-firmware=y
+CONFIG_PACKAGE_kmod-usb-net=y
+CONFIG_PACKAGE_kmod-usb-net-rtl8152=y
+CONFIG_PACKAGE_r8152-firmware=y
+
+#
+# USB (若你的 WAN/LAN 通过 USB 网卡)
+#
+CONFIG_PACKAGE_kmod-usb-core=y
+CONFIG_PACKAGE_kmod-usb2=y
+CONFIG_PACKAGE_kmod-usb3=y
+CONFIG_PACKAGE_kmod-usb-xhci-hcd=y
+CONFIG_PACKAGE_kmod-usb-xhci-pci=y
+
+#
+# LuCI - 二选一
+# 1) 想最小化就全关，只用 SSH
+#
+# CONFIG_PACKAGE_luci is not set
+# CONFIG_PACKAGE_uhttpd is not set
+# CONFIG_PACKAGE_uhttpd-mod-ubus is not set
+
+#
+# 2) 如果你想开机后直接网页配置，把下面打开
+#
+CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_luci-ssl=y
+CONFIG_PACKAGE_uhttpd=y
+CONFIG_PACKAGE_uhttpd-mod-ubus=y
+
+#
+# Remove common bloat
+#
+# CONFIG_PACKAGE_containerd is not set
+# CONFIG_PACKAGE_coremark is not set
+# CONFIG_PACKAGE_coreutils is not set
+# CONFIG_PACKAGE_gawk is not set
+# CONFIG_PACKAGE_jq is not set
+# CONFIG_PACKAGE_lm-sensors is not set
+# CONFIG_PACKAGE_losetup is not set
+# CONFIG_PACKAGE_lscpu is not set
+# CONFIG_PACKAGE_lsof is not set
+# CONFIG_PACKAGE_iftop is not set
+# CONFIG_PACKAGE_iperf3 is not set
+# CONFIG_PACKAGE_iw is not set
+# CONFIG_PACKAGE_ethtool is not set
+# CONFIG_PACKAGE_etherwake is not set
+# CONFIG_PACKAGE_chat is not set
+
+#
+# Remove wireless stack
+#
+# CONFIG_PACKAGE_wifi-scripts is not set
+# CONFIG_PACKAGE_wireless-tools is not set
+# CONFIG_PACKAGE_iwinfo is not set
+# CONFIG_PACKAGE_libiwinfo-data is not set
+
+#
+# Remove extra protocol extensions
+#
+# CONFIG_PACKAGE_luci-proto-3g is not set
+# CONFIG_PACKAGE_luci-proto-batman-adv is not set
+# CONFIG_PACKAGE_luci-proto-ipip is not set
+# CONFIG_PACKAGE_luci-proto-ncm is not set
+# CONFIG_PACKAGE_luci-proto-openconnect is not set
+# CONFIG_PACKAGE_luci-proto-qmi is not set
+# CONFIG_PACKAGE_luci-proto-relay is not set
+
+#
+# Remove advanced network features
+#
+# CONFIG_PACKAGE_kmod-batman-adv is not set
+# CONFIG_PACKAGE_kmod-bonding is not set
+# CONFIG_PACKAGE_kmod-ipip is not set
+# CONFIG_PACKAGE_kmod-macsec is not set
+# CONFIG_PACKAGE_kmod-nf-ipvs is not set
+# CONFIG_PACKAGE_kmod-nft-tproxy is not set
+# CONFIG_PACKAGE_kmod-nf-tproxy is not set
+# CONFIG_PACKAGE_kmod-nft-fullcone is not set
+
+#
+# Remove filesystem extras
+#
+# CONFIG_PACKAGE_block-mount is not set
+# CONFIG_PACKAGE_blockd is not set
+# CONFIG_PACKAGE_kmod-fs-btrfs is not set
+# CONFIG_PACKAGE_kmod-fs-cifs is not set
+# CONFIG_PACKAGE_kmod-fs-exfat is not set
+# CONFIG_PACKAGE_kmod-fs-f2fs is not set
+# CONFIG_PACKAGE_kmod-fs-hfs is not set
+# CONFIG_PACKAGE_kmod-fs-hfsplus is not set
+# CONFIG_PACKAGE_kmod-fs-isofs is not set
+# CONFIG_PACKAGE_kmod-fs-jfs is not set
+# CONFIG_PACKAGE_kmod-fs-nfs is not set
+# CONFIG_PACKAGE_kmod-fs-nfs-v3 is not set
+# CONFIG_PACKAGE_kmod-fs-nfs-v4 is not set
+# CONFIG_PACKAGE_kmod-fs-nfsd is not set
+# CONFIG_PACKAGE_kmod-fs-ntfs3 is not set
+# CONFIG_PACKAGE_kmod-fs-reiserfs is not set
+# CONFIG_PACKAGE_kmod-fs-smbfs-common is not set
+# CONFIG_PACKAGE_kmod-fs-xfs is not set
+# CONFIG_PACKAGE_kmod-fuse is not set
+
+#
+# Remove wrong/generic boot extras
+#
+# CONFIG_PACKAGE_u-boot-qemu_armv8 is not set
